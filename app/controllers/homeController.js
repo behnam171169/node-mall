@@ -21,13 +21,18 @@ class homeController extends controller{
   async  allstuff(req,res){
  
     const dataa=req.params.id;
+    // console.log(dataa,'uuu')
     const data=dataa.split(',');
  
     const flowers=await Course.find({types:data[1],check:true});
-    if(flowers.length>0){
+    console.log(flowers,'hhhhhh')
+    if(flowers){
       res.status(200).json(flowers);
-    }else{
-      res.status(400).json({message:'notfound'});
+    }
+    
+    else 
+    {
+      res.status(400).json({message:'notfound',title:'کالایی یافت نشد'});
     }
     
   }
