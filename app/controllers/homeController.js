@@ -25,7 +25,7 @@ class homeController extends controller{
     const data=dataa.split(',');
  
     const flowers=await Course.find({types:data[1],check:true});
-    console.log(flowers,'hhhhhh')
+   
     if(flowers){
       res.status(200).json(flowers);
     }
@@ -35,6 +35,16 @@ class homeController extends controller{
       res.status(400).json({message:'notfound',title:'کالایی یافت نشد'});
     }
     
+  }
+  async  all(req,res){
+    const flowers=await Course.find({check:true});
+    if(flowers){
+      res.status(200).json(flowers);
+    }  else 
+    {
+      res.status(400).json({message:'notfound',title:'کالایی یافت نشد'});
+    }
+
   }
   async createcomment(req,res){
     // console.log(req.body,'hgfffffdddd')

@@ -4,6 +4,7 @@ const router=express.Router();
 const homeController=require('./../controllers/homeController');
 router.get('/',homeController.index)
 router.get('/allstuff/:id',homeController.allstuff)
+router.get('/all',homeController.all)
 router.get('/detail/:id',homeController.detail)
 // -------------------------
 router.post('/createcomment',homeController.createcomment)
