@@ -29,6 +29,7 @@
     "puretext": "^0.1.5",
     "request": "^2.88.2",
     "request-promise": "^4.2.6",
+    "trez-sms-client": "^1.0.4",
     "unique-string": "^2.0.0"
   }
 }

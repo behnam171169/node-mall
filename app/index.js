@@ -10,6 +10,7 @@ var cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const passport=require('passport');
 
+
 var cors = require('cors');
 module.exports=class Application{
     constructor(){
@@ -17,8 +18,10 @@ module.exports=class Application{
         this.configDatabase();
         this.setconfig();
         this.setRoutes();
+        
    
     }
+   
     configServer(){
         const server=http.createServer(app)
         server.listen(3000,(err)=>{

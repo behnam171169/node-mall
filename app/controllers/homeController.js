@@ -1,5 +1,6 @@
 const controller=require('./controller');
 const Comment=require('./../models/comments');
+const Question=require('../models/question');
 const Course=require('./../models/courses');
 const Buys=require('./../models/buys');
 const Reciver=require('./../models/reciver');
@@ -317,6 +318,20 @@ class homeController extends controller{
                   if(profile){
                     res.status(200).json({data:profile})
                   }
+                }
+
+                async customerquestion(req,res,next){
+                    
+          var result = Object.keys(req.body)[0];
+          var obj = JSON.parse(result);
+          const question=new Question({
+            question:obj.question,
+  
+            user:obj.userid,
+            
+          })
+          question.save(err=>console.log(err))
+                 
                 }
               }
               module.exports=new homeController();

@@ -4,7 +4,7 @@ const uniqueString = require('unique-string');
 const Schema = mongoose.Schema;
 const Course=mongoose.Schema({
 
-    user:{type:Schema.Types.ObjectId,ref:'User'},
+    user:{type:String,require:true},
    title:{type:String,require:true},
    slug:{type:String,default:''},
    prices:{type:String,default:''},

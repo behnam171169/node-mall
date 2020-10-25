@@ -21,9 +21,10 @@ router.get('/getreciverdetails/:id',homeController.getreciverdetails)
 router.put('/editreciverdetails/:id',homeController.editreciverdetails)
 router.get('/checkreciverdetails/:id',homeController.checkreciverdetails)
 router.get('/edietprofile/:id',homeController.editprofile)
-
 // --------------------------------------
 router.post('/payment', homeController.payment);
 router.get('/payment/callbackurl',homeController.callbackurl);
+// -------------------------------------------
+router.post('/customerquestion',homeController.customerquestion);
 
  module.exports=router;

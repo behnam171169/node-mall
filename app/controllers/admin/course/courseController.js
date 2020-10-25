@@ -6,13 +6,27 @@ const { Console } = require('console');
 class courseController extends controller{
     async index(req,res,next){
         const courses=await Course.find({check:false});
+if(courses){
+    res.status(200).json(courses)
+}else{
+    res.status(400).json({message:'error'})
+} 
+    }
 
-     res.json(courses)
+    async mycourses(req,res,next){
+       console.log(req.params.id,'jjj')
+        const courses=await Course.find({user:req.params.id});
+        console.log(courses,'llkkkk')
+if(courses){
+    res.status(200).json(courses)
+}else{
+    res.status(400).json({message:'error'})
+} 
     }
     store(req,res,next){
-     
+        console.log(req.body,'ggggttt')
 let images=this.getDirImage(`${req.file.destination}/${req.file.filename}`)
-let{title,type,prices,explains,weight,color,country,garantis,numberinpuckets,memorys}=req.body;
+let{title,type,prices,explains,weight,color,country,garantis,numberinpuckets,memorys,user}=req.body;
         const addcourse=new Course({
             // user:req.user._id,
             title:title,
@@ -26,7 +40,8 @@ let{title,type,prices,explains,weight,color,country,garantis,numberinpuckets,mem
              country:country,
              garantis:garantis,
              numberinpuckets:numberinpuckets,
-             memorys:memorys
+             memorys:memorys,
+             user:user
         })
         addcourse.save(err=>console.log(err))
         if(addcourse.save){

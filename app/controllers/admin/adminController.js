@@ -2,7 +2,9 @@ const controller=require('./../controller');
 const Buys=require('./../../models/buys');
  const User=require('./../../models/users');
  const reciver=require('./../../models/reciver');
+ const question=require('./../../models/question');
 const { findOne } = require('./../../models/buys');
+
 class adminController extends controller{
     index(req,res,next){
         res.render()
@@ -53,6 +55,12 @@ async sendstuffok(req,res,next){
   // await Buys.findOneAndUpdate({resnumber:req.params.resnumber},{$set:{see:true}});
   await  Buys.updateMany({resnumber:req.params.resnumber},{$set:{send:true}});
   res.status(200).json({message:'ok'})
+}
+
+async userquestions(req,res,next){
+const userquestions= await question.find({answer:''})
+// console.log(questions,'ppppp')
+res.status(200).json(userquestions)
 }
 }
 

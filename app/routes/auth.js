@@ -6,10 +6,12 @@ const loginController=require('./../controllers/auth/loginController');
 const forgetPasswordController=require('./../controllers/auth/forgetPasswordController');
 const resetPasswordController=require('./../controllers/auth/resetPasswordController');
 
+router.post('/sendmessage',registerController.Sendmessage)
 router.post('/register',registerController.registerprocess)
 router.put('/editprofile/:id',registerController.editprofile)
 router.post('/login',loginController.loginprocess)
 router.post('/login/token',authtoken,loginController.logintoken)
 router.post('/password/email',forgetPasswordController.passwordResetLink);
 router.post('/password/reset',resetPasswordController.resetPassword);
+
 module.exports=router;

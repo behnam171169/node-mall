@@ -19,7 +19,7 @@ const storageImage=multer.diskStorage({
   )
    },
    filename:(req,file,cb)=>{
-
+console.log(file,'oioioioi')
        let filePath=getDir()+'/'+file.originalname;
        if(! fs.existsSync(filePath)){
         cb(null,file.originalname)

@@ -4,6 +4,7 @@ var puretext = require('puretext');
 
 const passport = require('passport');
 const jwt = require("jsonwebtoken");
+const TrezSmsClient = require("trez-sms-client");
 class registerController extends controller{
    
   async  registerprocess(req,res,next){
@@ -83,5 +84,24 @@ if(userupdate){
   res.status(400).json({message:'ok'})
 }
 }
+ async Sendmessage(req,res,next){
+const client = new TrezSmsClient("Behnam1769", "B@m12345");
+  
+// client.autoSendCode("09019851614", "Signiture Footer For Branding")
+// .then((messageId) => {
+//     console.log("Sent Message ID: " + messageId);
+// })
+// .catch(error => console.log(error));
+
+client.sendMessage("5000248889","09019851614","Hello Guys!","147852369")
+	.then((receipt) => {
+		console.log("Receipt: " + receipt);
+	})
+	.catch((error) => {
+		// If there is an error, we'll catch that
+		console.log(error.isHttpException, error.code, error.message);
+	});
+
+ }
 }
 module.exports=new registerController();
