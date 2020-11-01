@@ -115,10 +115,10 @@ class homeController extends controller{
       }
       
       async buysplus(req,res,next){
-   
+   const h='kk';
         var result = Object.keys(req.body)[0];
         var obj = JSON.parse(result);
-
+  //  ----
         await Buys.findOneAndUpdate({user:req.params.id,_id:obj.id},{ $inc: { Count: 1 }})
         res.status(200).json({message:'ok'})
       }
