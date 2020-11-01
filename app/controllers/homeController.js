@@ -326,12 +326,36 @@ class homeController extends controller{
           var obj = JSON.parse(result);
           const question=new Question({
             question:obj.question,
-  
             user:obj.userid,
-            
           })
           question.save(err=>console.log(err))
-                 
+          if(question){
+            res.status(200).json('ok')
+          }else{
+            res.status(400).json({message:'خطایی رخ داد'})
+          }
+                }
+
+               
+                async answeradmin(req,res,next){
+                  
+                  var result = Object.keys(req.body)[0];
+                  var obj = JSON.parse(result);
+                const question=await Question.findOneAndUpdate({_id:obj.id},{$set:{answer:obj.answer}});
+              if(question){
+                res.status(200).json('ok')
+              }else{
+                res.status(400).json('error')
+              }
+              }
+                async myquestionanswer(req,res,next){
+                  console.log(req.params,'kkkkk')
+                 const myquestion=await Question.find({user:req.params.id})
+                 if(myquestion){
+                   res.status(200).json(myquestion)
+                 }else(
+                   res.status(400).json({message:'notfound'})
+                 )
                 }
               }
               module.exports=new homeController();

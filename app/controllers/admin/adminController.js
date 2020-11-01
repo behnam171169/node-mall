@@ -58,7 +58,7 @@ async sendstuffok(req,res,next){
 }
 
 async userquestions(req,res,next){
-const userquestions= await question.find({answer:''})
+const userquestions= await question.find({answer:'فعلا پاسخی داده نشده'})
 // console.log(questions,'ppppp')
 res.status(200).json(userquestions)
 }

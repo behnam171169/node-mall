@@ -26,5 +26,8 @@ router.post('/payment', homeController.payment);
 router.get('/payment/callbackurl',homeController.callbackurl);
 // -------------------------------------------
 router.post('/customerquestion',homeController.customerquestion);
+router.post('/answeradmin',homeController.answeradmin);
+router.get('/myquestionanswer/:id',homeController.myquestionanswer);
+
 
  module.exports=router;
