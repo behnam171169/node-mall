@@ -15,6 +15,7 @@ router.delete('/course/:id',courseController.destroy);
 router.put('/course/edit/:id',courseController.update);
 // router.get('/checkadmin',courseController.comments)
 // ------------------------
+router.get('/test', function(req, res) { return res.send('ok')})
 router.get('/comments',courseController.comments)
 router.put('/commentsok/:id',courseController.commentsok)
 router.delete('/commentsdelete/:id',courseController.commentsdelete)

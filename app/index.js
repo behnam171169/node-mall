@@ -31,8 +31,10 @@ module.exports=class Application{
     }
     configDatabase(){
 mongoose.Promise=global.Promise;
-mongoose.connect(config.database.url,{useFindAndModify:false})
-    }
+//  mongoose.connect(config.database.url,{useNewUrlParser:true,useFindAndModify:false,authSource:'admin'})
+ mongoose.connect(config.database.url,{useFindAndModify:false})
+
+}
     setconfig(){
        
         app.use(cors());
@@ -50,6 +52,7 @@ mongoose.connect(config.database.url,{useFindAndModify:false})
           app.use(cookieParser('secretID'));   
           app.use(passport.initialize());
           app.use(passport.session());
+          app.use(express.static('public'))
         //   app.use(rememberLogin.handle);
         app.use((req,res,next)=>{
             app.locals=new Helper(req,res).object()
