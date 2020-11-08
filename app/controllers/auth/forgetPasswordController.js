@@ -11,11 +11,11 @@ class forgetPasswordController extends controller{
     await  User.findOne({username:obj.username}, function (err, user) {
       if (err) { return done(err); }
       console.log(user);
-      if(!user){
-        return(
-          
+      if(user){
+        res.status(200).json({message:'ok'}) 
+      }
+      else if(!user){
           res.status(400).json({message:'کاربری با این ایمیل ثبت نام نکرده است'}) 
-          )
         }
         
         const setpassword=new passwordReset({

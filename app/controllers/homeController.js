@@ -22,13 +22,17 @@ class homeController extends controller{
   async  allstuff(req,res){
  
     const dataa=req.params.id;
-    // console.log(dataa,'uuu')
+   
     const data=dataa.split(',');
  
     const flowers=await Course.find({types:data[1],check:true});
-   
-    if(flowers){
-      res.status(200).json(flowers);
+    
+    const itemData=flowers.filter((item)=>{
+      const itemDataa=item.title;
+      return itemDataa.indexOf(data[0])>-1
+  })
+    if(itemData){
+      res.status(200).json(itemData);
     }
     
     else 
@@ -95,11 +99,12 @@ class homeController extends controller{
       })
       buys.save(err=>console.log(err))
       if(buys.save){
-        return(
+      
           res.status(200).json({
-            message:"ثبت سفارش با موفقیت انجام شد"
-          })
-          )
+            message:"ثبت سفارش با موفقیت انجام شد"})
+          
+        }else{
+          res.status(400).json('not found')
         }
         
       }
@@ -115,7 +120,7 @@ class homeController extends controller{
       }
       
       async buysplus(req,res,next){
-   const h='kk';
+  
         var result = Object.keys(req.body)[0];
         var obj = JSON.parse(result);
   //  ----

@@ -32,7 +32,7 @@ module.exports=class Application{
     configDatabase(){
 mongoose.Promise=global.Promise;
 //  mongoose.connect(config.database.url,{useNewUrlParser:true,useFindAndModify:false,authSource:'admin'})
- mongoose.connect(config.database.url,{useFindAndModify:false})
+   mongoose.connect(config.database.url,{useFindAndModify:false})
 
 }
     setconfig(){
